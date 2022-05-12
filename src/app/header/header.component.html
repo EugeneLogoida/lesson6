@@ -1,0 +1,99 @@
+<div class="header d-flex  align-items-center">
+    <div class="d-flex justify-content-between m-auto col-11">
+        <h3>Angular Blog</h3>
+
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example" *ngIf="!isLogged">
+            <button type="button" class="btn btn-outline-success" (click)="signIn()">Sign In</button>
+            <button type="button" class="btn btn-outline-primary" (click)="signUp()">Sign Up</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example" *ngIf="isLogged">
+            <button type="button" class="btn btn-outline-success" (click)="addPost()">Add post</button>
+            <button type="button" class="btn btn-warning">{{ userControl }}</button>
+            <button type="button" class="btn btn-outline-warning" (click)="signOut()">Sign Out</button>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="signInBool" class="ay d-flex align-items-center justify-content-center ">
+
+    <div class="container col-6">
+        <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="signIn()"></button>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" placeholder="name@example.com" [(ngModel)]="signInInputE">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="" [(ngModel)]="signInInputP">
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeSI()">Close</button>
+                <button type="button" class="btn btn-primary" [disabled]="!signInInputE || !signInInputP"
+                    (click)="submitSI()">Submit</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div *ngIf="signUpBool" class="ay d-flex align-items-center justify-content-center ">
+
+    <div class="container col-6">
+        <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="signUp()"></button>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Username</label>
+            <input type="text" class="form-control" [(ngModel)]="signUpInputU">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" placeholder="name@example.com" [(ngModel)]="signUpInputE">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="" [(ngModel)]="signUpInputP">
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeSU()">Close</button>
+                <button type="button" class="btn btn-primary"
+                    [disabled]="!signUpInputE || !signUpInputP || !signUpInputU" (click)="submitSU()">Save
+                    changes</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="addPostBool" class="ay d-flex align-items-center justify-content-center ">
+    <div class="container col-6">
+        <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="addPost()"></button>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" class="form-control" [(ngModel)]="addPostTitle">
+        </div>
+
+        <div class="mb-3">
+            <label for=" exampleFormControlTextarea1" class="form-label">Textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                [(ngModel)]="addPostText"></textarea>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeAP()">Close</button>
+                <button type="button" class="btn btn-primary" [disabled]="!addPostTitle || !addPostText"
+                    (click)="post()">Post</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
